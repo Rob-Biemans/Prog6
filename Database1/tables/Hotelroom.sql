@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Hotelroom]
+(
+	[Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
+    [Beds] TINYINT NOT NULL CHECK ([Beds] IN(2,3,5)), 
+    [Type] VARCHAR(50) NOT NULL CHECK ([Type] IN('REST','FIGHT','GAME','WORK')),
+	[Price] DECIMAL(10,2) NOT NULL
+)
