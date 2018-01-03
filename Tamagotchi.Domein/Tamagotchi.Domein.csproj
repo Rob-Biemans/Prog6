@@ -80,6 +80,15 @@
       <DependentUpon>Tamagotchi.edmx</DependentUpon>
     </Compile>
     <Compile Include="RepositoryLocator.cs" />
+    <Compile Include="Repository\Database\BookingDatabaseRepository.cs" />
+    <Compile Include="Repository\Database\HotelroomDatabaseRepository.cs" />
+    <Compile Include="Repository\Database\TamagotchiDatabaseRepository.cs" />
+    <Compile Include="Repository\Dummy\BookingDummyRepository.cs" />
+    <Compile Include="Repository\Dummy\HotelroomDummyRepository.cs" />
+    <Compile Include="Repository\Dummy\TamagotchiDummyRepository.cs" />
+    <Compile Include="Repository\Interfaces\IBookingRepository.cs" />
+    <Compile Include="Repository\Interfaces\IHotelroomRepository.cs" />
+    <Compile Include="Repository\Interfaces\ITamagotchiRepository.cs" />
     <Compile Include="Repository\IWriteAbleRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IReadAbleRepository.cs" />
@@ -95,11 +104,7 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repository\Database\" />
-    <Folder Include="Repository\Dummy\" />
-    <Folder Include="Repository\Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Models\Tamagotchi.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
