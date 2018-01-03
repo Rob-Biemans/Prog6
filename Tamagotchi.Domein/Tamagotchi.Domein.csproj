@@ -45,6 +45,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +55,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Booking.cs">
+      <DependentUpon>Tamagotchi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hotelroom.cs">
+      <DependentUpon>Tamagotchi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tamagochi.cs">
+      <DependentUpon>Tamagotchi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tamagotchi.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Tamagotchi.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tamagotchi.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Tamagotchi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tamagotchi.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Tamagotchi.edmx</DependentUpon>
+    </Compile>
     <Compile Include="RepositoryLocator.cs" />
     <Compile Include="Repository\IWriteAbleRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,13 +86,35 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="Models\Tamagotchi.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Tamagotchi.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\Tamagotchi.edmx.diagram">
+      <DependentUpon>Tamagotchi.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Repository\Database\" />
     <Folder Include="Repository\Dummy\" />
     <Folder Include="Repository\Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\Tamagotchi.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Tamagotchi.edmx</DependentUpon>
+      <LastGenOutput>Tamagotchi.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Tamagotchi.edmx.sql" />
+    <Content Include="Models\Tamagotchi.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Tamagotchi.edmx</DependentUpon>
+      <LastGenOutput>Tamagotchi.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
