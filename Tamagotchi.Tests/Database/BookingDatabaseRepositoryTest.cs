@@ -39,7 +39,7 @@ namespace Tamagotchi.Tests
 
             Booking b = new Booking()
             {
-                Id = 1,
+                Id = 7,
                 Start = new DateTime(2018, 5, 2, 0, 0, 0),
                 End = new DateTime(2019, 6, 7, 0, 0, 0),
                 HotelroomId = 1,
@@ -51,9 +51,9 @@ namespace Tamagotchi.Tests
 
             // Assert
             set.Verify(x => x.Add(It.IsAny<Booking>()), Times.Once());
-            List<Booking> added = set.Object.Where(x => x.Id == 1).ToList();
+            List<Booking> added = set.Object.Where(x => x.Id == 7).ToList();
             Assert.AreEqual(1, added.Count);
-            Assert.AreEqual(1, added[0].Id);
+            Assert.AreEqual(7, added[0].Id);
             Assert.AreEqual(new DateTime(2018, 5, 2, 0, 0, 0), added[0].Start);
             Assert.AreEqual(new DateTime(2019, 6, 7, 0, 0, 0), added[0].End);
             Assert.AreEqual(1, added[0].HotelroomId);
@@ -69,14 +69,14 @@ namespace Tamagotchi.Tests
             Mock<TamagotchiEntities> context;
             GetContext(out repository, out set, out context);
 
-            Booking b = set.Object.Where(x => x.Id == 2).ToList()[0];
+            Booking b = set.Object.Where(x => x.Id == 1).ToList()[0];
 
             // Act
             repository.Remove(b);
 
             // Assert
             set.Verify(x => x.Remove(It.IsAny<Booking>()), Times.Once());
-            Assert.AreEqual(0, set.Object.Where(x => x.Id == 2).ToList().Count);
+            Assert.AreEqual(0, set.Object.Where(x => x.Id == 1).ToList().Count);
         }
 
         [TestMethod]
@@ -91,9 +91,9 @@ namespace Tamagotchi.Tests
             Booking b = new Booking()
             {
                 Id = 1,
-                Start = new DateTime(2018, 5, 2, 0, 0, 0),
+                Start = new DateTime(2018, 4, 2, 0, 0, 0),
                 End = new DateTime(2019, 6, 7, 0, 0, 0),
-                HotelroomId = 1,
+                HotelroomId = 2,
                 TamagotchiId = 1
             };
 
@@ -103,11 +103,11 @@ namespace Tamagotchi.Tests
             // Assert
             set.Verify(x => x.Add(It.IsAny<Booking>()), Times.Once());
             List<Booking> updated = set.Object.Where(x => x.Id == 1).ToList();
-            Assert.AreEqual(1, updated.Count);
+            Assert.AreEqual(2, updated.Count);
             Assert.AreEqual(1, updated[0].Id);
-            Assert.AreEqual(new DateTime(2018, 5, 2, 0, 0, 0), updated[0].Start);
+            Assert.AreEqual(new DateTime(2018, 4, 2, 0, 0, 0), updated[0].Start);
             Assert.AreEqual(new DateTime(2019, 6, 7, 0, 0, 0), updated[0].End);
-            Assert.AreEqual(1, updated[0].HotelroomId);
+            Assert.AreEqual(2, updated[0].HotelroomId);
             Assert.AreEqual(1, updated[0].TamagotchiId);
         }
 

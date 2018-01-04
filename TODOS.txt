@@ -1,13 +1,14 @@
 ~~ Tamagotchi.Domein
-- Database/Model (Tamagotchi, Hotelkamers, Overnachten/Boekingen)
-- Repo Interface per Classe uit Db/Model
-- Repo Db per Classe uit Db/Model
-- Repo Dummy per Classe uit Db/Model
+### Database/Model (Tamagotchi, Hotelkamers, Overnachten/Boekingen)
+### Repo Interface per Classe uit Db/Model
+### Repo Db per Classe uit Db/Model
+### Repo Dummy per Classe uit Db/Model
 
 
 ~~ Tamagotchi.Tests
 - Unit Testing van business & controller logic 
 - Test minimaal de spelregels van de kamers en de validatieregels van de kamers, Tamagotchi's en boekingen. 
+### Unit testing op repos
 
 ~~ Tamagotchi
 
@@ -19,3 +20,13 @@
 - Geen foute input kunnen geven of validatie meldingen zien wanneer wel het geval is.
 - Boeken en nachten moeten op de juiste manier verlopen
 - Goede overzicht van al je levende Tamagotchis (Datatable mbt Bootstrap)
+- UserViewModel
+- Hotelroom Controller
+- Tamagotchi Controller
+- Booking Controller
+- User Controller
+
+::LEGEND::
+
+-	= todo
+### = done
