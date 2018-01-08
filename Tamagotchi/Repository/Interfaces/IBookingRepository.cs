@@ -2,9 +2,9 @@
 
 namespace Tamagotchi.Domein.Repository
 {
-    public interface IHotelroomRepository : IWriteableRepository<Hotelroom>
+    public interface IBookingRepository : IWriteableRepository<Booking>
     {
-        Hotelroom GetById(int? ID);
+        Booking GetById(int? ID);
         bool ForceRefresh();
     }
 }

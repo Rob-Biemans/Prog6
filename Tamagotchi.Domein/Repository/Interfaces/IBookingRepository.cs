@@ -4,7 +4,9 @@ namespace Tamagotchi.Domein.Repository
 {
     public interface IBookingRepository : IWriteableRepository<Booking>
     {
-        Booking GetById(int ID);
+        Booking GetById(int? ID);
         bool ForceRefresh();
+        void Add();
+        void Update();
     }
 }

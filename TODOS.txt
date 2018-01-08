@@ -1,32 +1,14 @@
-~~ Tamagotchi.Domein
-### Database/Model (Tamagotchi, Hotelkamers, Overnachten/Boekingen)
-### Repo Interface per Classe uit Db/Model
-### Repo Db per Classe uit Db/Model
-### Repo Dummy per Classe uit Db/Model
-
-
 ~~ Tamagotchi.Tests
-- Unit Testing van business & controller logic 
+- Unit Testing van business & controller logic
 - Test minimaal de spelregels van de kamers en de validatieregels van de kamers, Tamagotchi's en boekingen. 
-### Unit testing op repos
 
 ~~ Tamagotchi
 
-- Kamers CRUD
-- Tamagotchi CRUD
+- Hotelroom controller (moet nog gebruik maken van DI) (Dependency Injection / IO)
+- Tamagotchi controller (moet nog gebruik maken van DI)
+- Booking controller (moet nog gebruik maken van DI)
 - Boeking mogelijk voor 1 Tamagotchi
 - 1 Nacht moet op de juiste manier laten verlopen
 
-- Geen foute input kunnen geven of validatie meldingen zien wanneer wel het geval is.
+- (TESTEN) Geen foute input kunnen geven of validatie meldingen zien wanneer wel het geval is. > frontend moet getest worden (voor backend zie Validatie folder)
 - Boeken en nachten moeten op de juiste manier verlopen
-- Goede overzicht van al je levende Tamagotchis (Datatable mbt Bootstrap)
-- UserViewModel
-- Hotelroom Controller
-- Tamagotchi Controller
-- Booking Controller
-- User Controller
-
-::LEGEND::
-
--	= todo
-### = done

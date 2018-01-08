@@ -6,33 +6,38 @@
             <div class="col-lg-12">
                 <h2>Details</h2>
                 <div class="row">
-                    <div class="col-lg-2">
-                        <img src="@Model.ItemUrl" />
-                    </div>
                     <div class="col-lg-4">
                         <dl class="dl-horizontal">
                             <dt>
-                                @Html.DisplayNameFor(model => model.Name)
+                                @Html.DisplayNameFor(model => model.Id)
                             </dt>
 
                             <dd>
-                                @Html.DisplayFor(model => model.Name)
+                                @Html.DisplayFor(model => model.Id)
                             </dd>
 
                             <dt>
-                                @Html.DisplayNameFor(model => model.Description)
+                                @Html.DisplayNameFor(model => model.Beds)
                             </dt>
 
                             <dd>
-                                @Html.DisplayFor(model => model.Description)
+                                @Html.DisplayFor(model => model.Beds)
                             </dd>
 
                             <dt>
-                                @Html.DisplayNameFor(model => model.Gold)
+                                @Html.DisplayNameFor(model => model.Type)
                             </dt>
 
                             <dd>
-                                @Html.DisplayFor(model => model.Gold)
+                                @Html.DisplayFor(model => model.Type)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Price)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Price)
                             </dd>
                         </dl>
                     </div>

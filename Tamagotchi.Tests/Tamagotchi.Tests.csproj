@@ -135,10 +135,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Tamagotchi.Domein\Tamagotchi.Domein.csproj">
-      <Project>{358AF4B4-D4A9-4A42-A8C7-4785CC55DF80}</Project>
-      <Name>Tamagotchi.Domein</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Tamagotchi\Tamagotchi.csproj">
       <Project>{0152E404-B18E-4EF8-8FD3-76EA8B4F5F65}</Project>
       <Name>Tamagotchi</Name>

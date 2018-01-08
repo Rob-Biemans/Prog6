@@ -77,9 +77,27 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject, Version=3.3.3.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.3\lib\net45\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.3.0\lib\net45\Ninject.Web.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common.WebHost, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.WebHost.3.3.0\lib\net45\Ninject.Web.Common.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC5.3.3.0\lib\net45\Ninject.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -196,17 +214,56 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HotelroomController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TamagotchiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\BookingViewModel.cs" />
-    <Compile Include="Models\HotelroomViewModel.cs" />
+    <Compile Include="Models\Booking.cs">
+      <DependentUpon>Tamagotchi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hotelroom.cs">
+      <DependentUpon>Tamagotchi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tamagochi.cs">
+      <DependentUpon>Tamagotchi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tamagotchi.Context.cs">
+      <DependentUpon>Tamagotchi.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\Tamagotchi.cs">
+      <DependentUpon>Tamagotchi.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\Tamagotchi.Designer.cs">
+      <DependentUpon>Tamagotchi.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="RepositoryLocator.cs" />
+    <Compile Include="Repository\Database\BookingDatabaseRepository.cs" />
+    <Compile Include="Repository\Database\HotelroomDatabaseRepository.cs" />
+    <Compile Include="Repository\Database\TamagotchiDatabaseRepository.cs" />
+    <Compile Include="Repository\Dummy\BookingDummyRepository.cs" />
+    <Compile Include="Repository\Dummy\HotelroomDummyRepository.cs" />
+    <Compile Include="Repository\Dummy\TamagotchiDummyRepository.cs" />
+    <Compile Include="Repository\Interfaces\IBookingRepository.cs" />
+    <Compile Include="Repository\Interfaces\IHotelroomRepository.cs" />
+    <Compile Include="Repository\Interfaces\ITamagotchiRepository.cs" />
+    <Compile Include="Repository\IReadAbleRepository.cs" />
+    <Compile Include="Repository\IWriteAbleRepository.cs" />
+    <Compile Include="Validatie\Booking.cs" />
+    <Compile Include="Validatie\Hotelroom.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\TamagotchiViewModel.cs" />
+    <Compile Include="Validatie\Tamagotchi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Views\Shared\Helpers\NavigationHelpers.cs" />
@@ -219,6 +276,17 @@
     <Content Include="Content\site.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Models\Tamagotchi.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Tamagotchi.edmx</DependentUpon>
+      <LastGenOutput>Tamagotchi.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Tamagotchi.edmx.sql" />
+    <Content Include="Models\Tamagotchi.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Tamagotchi.edmx</DependentUpon>
+      <LastGenOutput>Tamagotchi.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -238,6 +306,13 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap-material-design.js.map" />
+    <EntityDeploy Include="Models\Tamagotchi.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Tamagotchi.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Tamagotchi.edmx.diagram">
+      <DependentUpon>Tamagotchi.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -313,10 +388,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Tamagotchi.Domein\Tamagotchi.Domein.csproj">
-      <Project>{358AF4B4-D4A9-4A42-A8C7-4785CC55DF80}</Project>
-      <Name>Tamagotchi.Domein</Name>
-    </ProjectReference>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
