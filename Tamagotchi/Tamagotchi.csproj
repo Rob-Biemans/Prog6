@@ -288,6 +288,21 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Booking\Create.cshtml" />
+    <Content Include="Views\Booking\Delete.cshtml" />
+    <Content Include="Views\Booking\Details.cshtml" />
+    <Content Include="Views\Booking\Edit.cshtml" />
+    <Content Include="Views\Booking\Index.cshtml" />
+    <Content Include="Views\Hotelroom\Create.cshtml" />
+    <Content Include="Views\Hotelroom\Delete.cshtml" />
+    <Content Include="Views\Hotelroom\Details.cshtml" />
+    <Content Include="Views\Hotelroom\Edit.cshtml" />
+    <Content Include="Views\Hotelroom\Index.cshtml" />
+    <Content Include="Views\Tamagotchi\Create.cshtml" />
+    <Content Include="Views\Tamagotchi\Delete.cshtml" />
+    <Content Include="Views\Tamagotchi\Details.cshtml" />
+    <Content Include="Views\Tamagotchi\Edit.cshtml" />
+    <Content Include="Views\Tamagotchi\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
