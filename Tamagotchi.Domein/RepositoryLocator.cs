@@ -59,6 +59,11 @@ namespace Tamagotchi.Domein
             }
         }
 
+        public void Save()
+        {
+            _db.SaveChanges();
+        }
+
         //public IUserRepository UserRepository
         //{
         //    get
