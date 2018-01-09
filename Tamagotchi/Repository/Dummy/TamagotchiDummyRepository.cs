@@ -64,7 +64,7 @@ namespace Tamagotchi.Domein.Repository
 
         public Tamagochi GetById(int? ID)
         {
-            throw new NotImplementedException();
+            return _tamagotchiList.FirstOrDefault(x => x.Id == ID);
         }
 
         public void Remove(Tamagochi obj)

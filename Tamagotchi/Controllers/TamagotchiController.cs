@@ -12,22 +12,13 @@ namespace Tamagotchi.Controllers
 {
     public class TamagotchiController : Controller
     {
-        private ITamagotchiRepository _tamagotchiRepo { get; set; }
-
-        public TamagotchiController() : this(null) {
-
-        }
-
-        public TamagotchiController(ITamagotchiRepository tamagotchiRepo)
-        {
-            this._tamagotchiRepo = tamagotchiRepo;
-        }
+        private ITamagotchiRepository _tamagotchiRepo = RepositoryLocator.Repositories.TamagotchiRepository;
 
         // GET: Tamagotchi
         public ActionResult Index()
         {
             _tamagotchiRepo.ForceRefresh();
-            return View();
+            return View(_tamagotchiRepo.GetAll());
         }
 
         // GET: Tamagotchi/Details/5

@@ -12,7 +12,7 @@ namespace Tamagotchi.Domein
     public class RepositoryLocator
     {
         private static Lazy<RepositoryLocator> _repositories = new Lazy<RepositoryLocator>(() => new RepositoryLocator());
-        private static Mode CURRENT_MODE = Mode.DATABASE;
+        private static Mode CURRENT_MODE = Mode.DUMMY;
         private IKernel _kernel;
         private TamagotchiEntities _db;
 

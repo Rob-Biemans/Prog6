@@ -46,7 +46,7 @@ namespace Tamagotchi.Domein.Repository
 
         public Booking GetById(int? ID)
         {
-            throw new NotImplementedException();
+            return _bookingList.FirstOrDefault(x => x.Id == ID);
         }
 
         public void Remove(Booking obj)

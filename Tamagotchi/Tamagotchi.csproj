@@ -313,6 +313,7 @@
     <Content Include="Models\Tamagotchi.edmx.diagram">
       <DependentUpon>Tamagotchi.edmx</DependentUpon>
     </Content>
+    <Content Include="App.config" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

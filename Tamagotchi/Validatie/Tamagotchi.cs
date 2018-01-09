@@ -18,23 +18,29 @@ namespace Tamagotchi.Domein.Models
             public string Name { get; set; }
             [Required(ErrorMessage = "Leeftijd is verplicht.")]
             [DisplayName("Age")]
+            [DefaultValue(0)]
             public int Age { get; set; }
             [Required(ErrorMessage = "Geld is verplicht.")]
             [DisplayName("Currency")]
+            [DefaultValue(100)]
             public Nullable<decimal> Currency { get; set; }
             [Required(ErrorMessage = "Level is verplicht.")]
             [DisplayName("Level")]
+            [DefaultValue(0)]
             public int Level { get; set; }
             [Required(ErrorMessage = "Gezondheid is verplicht.")]
             [DisplayName("Health")]
             [Range(0, 100, ErrorMessage = "Gezondheid mag maar tussen de 0 en 100 bedragen.")]
+            [DefaultValue(100)]
             public int Health { get; set; }
             [Required(ErrorMessage = "Verveling is verplicht.")]
             [DisplayName("Happiness")]
             [Range(0, 100, ErrorMessage = "Verveling mag maar tussen de 0 en 100 bedragen.")]
+            [DefaultValue(0)]
             public byte Hapinness { get; set; }
             [Required(ErrorMessage = "Levend of Dood is verplicht.")]
             [DisplayName("Alive")]
+            [DefaultValue(1)]
             public byte Alive { get; set; }
         }
     }

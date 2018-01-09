@@ -4,77 +4,9 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TamagotchiModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="TamagotchiModelStoreContainer">
-    <EntitySet Name="Bookings" EntityType="TamagotchiModel.Store.Bookings" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Hotelrooms" EntityType="TamagotchiModel.Store.Hotelrooms" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Tamagochis" EntityType="TamagotchiModel.Store.Tamagochis" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="fk_hotelroom_tamagotchi" Association="TamagotchiModel.Store.fk_hotelroom_tamagotchi">
-      <End Role="Hotelroom" EntitySet="Hotelrooms" />
-      <End Role="Booking" EntitySet="Bookings" />
-    </AssociationSet>
-    <AssociationSet Name="fk_tamagotchi_hotelroom" Association="TamagotchiModel.Store.fk_tamagotchi_hotelroom">
-      <End Role="Tamagochi" EntitySet="Tamagochis" />
-      <End Role="Booking" EntitySet="Bookings" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="Bookings">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Start" Type="datetime" Nullable="false" />
-    <Property Name="End" Type="datetime" Nullable="true" />
-    <Property Name="TamagotchiId" Type="int" Nullable="false" />
-    <Property Name="HotelroomId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Hotelrooms">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Beds" Type="tinyint" Nullable="false" />
-    <Property Name="Type" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="Price" Type="decimal" Nullable="false" Precision="10" Scale="2" />
-  </EntityType>
-  <EntityType Name="Tamagochis">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="255" />
-    <Property Name="Age" Type="int" Nullable="false" />
-    <Property Name="Currency" Type="decimal" Nullable="true" Precision="11" Scale="2" />
-    <Property Name="Level" Type="int" Nullable="false" />
-    <Property Name="Health" Type="int" Nullable="false" />
-    <Property Name="Hapinness" Type="tinyint" Nullable="false" />
-    <Property Name="Alive" Type="tinyint" Nullable="false" />
-  </EntityType>
-  <Association Name="fk_hotelroom_tamagotchi">
-    <End Role="Hotelroom" Type="TamagotchiModel.Store.Hotelrooms" Multiplicity="1" />
-    <End Role="Booking" Type="TamagotchiModel.Store.Bookings" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Hotelroom">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Booking">
-        <PropertyRef Name="HotelroomId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_tamagotchi_hotelroom">
-    <End Role="Tamagochi" Type="TamagotchiModel.Store.Tamagochis" Multiplicity="1" />
-    <End Role="Booking" Type="TamagotchiModel.Store.Bookings" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Tamagochi">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Booking">
-        <PropertyRef Name="TamagotchiId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="TamagotchiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="TamagotchiModelStoreContainer" />
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TamagotchiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -157,42 +89,7 @@
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="TamagotchiModelStoreContainer" CdmEntityContainer="TamagotchiEntities">
-    <EntitySetMapping Name="Bookings">
-      <EntityTypeMapping TypeName="IsTypeOf(TamagotchiModel.Booking)">
-        <MappingFragment StoreEntitySet="Bookings">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Start" ColumnName="Start" />
-          <ScalarProperty Name="End" ColumnName="End" />
-          <ScalarProperty Name="TamagotchiId" ColumnName="TamagotchiId" />
-          <ScalarProperty Name="HotelroomId" ColumnName="HotelroomId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Hotelrooms">
-      <EntityTypeMapping TypeName="IsTypeOf(TamagotchiModel.Hotelroom)">
-        <MappingFragment StoreEntitySet="Hotelrooms">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Beds" ColumnName="Beds" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Tamagochis">
-      <EntityTypeMapping TypeName="IsTypeOf(TamagotchiModel.Tamagochi)">
-        <MappingFragment StoreEntitySet="Tamagochis">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Age" ColumnName="Age" />
-          <ScalarProperty Name="Currency" ColumnName="Currency" />
-          <ScalarProperty Name="Level" ColumnName="Level" />
-          <ScalarProperty Name="Health" ColumnName="Health" />
-          <ScalarProperty Name="Hapinness" ColumnName="Hapinness" />
-          <ScalarProperty Name="Alive" ColumnName="Alive" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-  </EntityContainerMapping>
+    </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->

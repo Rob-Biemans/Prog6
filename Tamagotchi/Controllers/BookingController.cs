@@ -12,22 +12,13 @@ namespace Tamagotchi.Controllers
 {
     public class BookingController : Controller
     {
-        private IBookingRepository _bookingRepo { get; set; }
-
-        public BookingController() : this(null) {
-
-        }
-
-        public BookingController(IBookingRepository bookingRepo)
-        {
-            this._bookingRepo = bookingRepo;
-        }
+        private IBookingRepository _bookingRepo = RepositoryLocator.Repositories.BookingRepository;
 
         // GET: Booking
         public ActionResult Index()
         {
             _bookingRepo.ForceRefresh();
-            return View();
+            return View(_bookingRepo.GetAll());
         }
 
         // GET: Booking/Details/5

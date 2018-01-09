@@ -60,7 +60,7 @@ namespace Tamagotchi.Domein.Repository
 
         public Hotelroom GetById(int? ID)
         {
-            throw new NotImplementedException();
+            return _hotelroomList.FirstOrDefault(x => x.Id == ID);
         }
 
         public void Remove(Hotelroom obj)

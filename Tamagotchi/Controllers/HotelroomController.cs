@@ -12,22 +12,13 @@ namespace Tamagotchi.Controllers
 {
     public class HotelroomController : Controller
     {
-        private IHotelroomRepository _hotelroomRepo { get; set; }
-
-        public HotelroomController() : this(null) {
-
-        }
-
-        public HotelroomController(IHotelroomRepository hotelroomRepo)
-        {
-            this._hotelroomRepo = hotelroomRepo;
-        }
+        private IHotelroomRepository _hotelroomRepo = RepositoryLocator.Repositories.HotelroomRepository;
 
         // GET: Hotelroom
         public ActionResult Index()
         {
             _hotelroomRepo.ForceRefresh();
-            return View();
+            return View(_hotelroomRepo.GetAll());
         }
 
         // GET: Hotelroom/Details/5
