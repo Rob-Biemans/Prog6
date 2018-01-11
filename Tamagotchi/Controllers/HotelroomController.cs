@@ -5,7 +5,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Tamagotchi.Domein;
-using Tamagotchi.Domein.Models;
+using Tamagotchi.Models;
 using Tamagotchi.Domein.Repository;
 
 namespace Tamagotchi.Controllers

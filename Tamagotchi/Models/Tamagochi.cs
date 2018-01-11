@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Tamagotchi.Domein.Models
+namespace Tamagotchi.Models
 {
     using System;
     using System.Collections.Generic;

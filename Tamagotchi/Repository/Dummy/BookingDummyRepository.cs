@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tamagotchi.Domein.Models;
+using Tamagotchi.Models;
 
 namespace Tamagotchi.Domein.Repository
 {
@@ -15,7 +15,7 @@ namespace Tamagotchi.Domein.Repository
         {
             _bookingList = new List<Booking>();
 
-            _bookingList.Add(new Models.Booking()
+            _bookingList.Add(new Booking()
             {
                 Id = 1,
                 Start = new DateTime(2018, 6, 2, 0, 0, 0),
@@ -24,7 +24,7 @@ namespace Tamagotchi.Domein.Repository
                 TamagotchiId = 1
             });
 
-            _bookingList.Add(new Models.Booking()
+            _bookingList.Add(new Booking()
             {
                 Id = 2,
                 Start = new DateTime(2017, 6, 3, 0, 0, 0),

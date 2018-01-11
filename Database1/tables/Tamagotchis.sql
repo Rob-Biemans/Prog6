@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Tamagochi]
+﻿CREATE TABLE [dbo].[Tamagochis]
 (
 	[Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	[Name] VARCHAR(255) NOT NULL,

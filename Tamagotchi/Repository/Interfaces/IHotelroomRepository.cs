@@ -1,4 +1,4 @@
-﻿using Tamagotchi.Domein.Models;
+﻿using Tamagotchi.Models;
 
 namespace Tamagotchi.Domein.Repository
 {

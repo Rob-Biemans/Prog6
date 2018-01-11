@@ -1,7 +1,7 @@
-﻿using Tamagotchi.Domein.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System;
+using Tamagotchi.Models;
 
 namespace Tamagotchi.Domein.Repository
 {

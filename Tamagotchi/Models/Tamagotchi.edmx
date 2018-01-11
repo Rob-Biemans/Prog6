@@ -4,12 +4,93 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TamagotchiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="TamagotchiModelStoreContainer" />
+    <Schema Namespace="TamagotchiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bookings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Start" Type="datetime" Nullable="false" />
+          <Property Name="End" Type="datetime" />
+          <Property Name="TamagotchiId" Type="int" Nullable="false" />
+          <Property Name="HotelroomId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hotelrooms">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Beds" Type="tinyint" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tamagochis">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="Currency" Type="decimal" Precision="11" Scale="2" />
+          <Property Name="Level" Type="int" Nullable="false" />
+          <Property Name="Health" Type="int" Nullable="false" />
+          <Property Name="Hapinness" Type="tinyint" Nullable="false" />
+          <Property Name="Alive" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_hotelroom_tamagotchi">
+          <End Role="Hotelrooms" Type="Self.Hotelrooms" Multiplicity="1" />
+          <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotelrooms">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="HotelroomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tamagotchi_hotelroom">
+          <End Role="Tamagochis" Type="Self.Tamagochis" Multiplicity="1" />
+          <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tamagochis">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="TamagotchiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TamagotchiModelStoreContainer">
+          <EntitySet Name="Bookings" EntityType="Self.Bookings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hotelrooms" EntityType="Self.Hotelrooms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tamagochis" EntityType="Self.Tamagochis" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_hotelroom_tamagotchi" Association="Self.fk_hotelroom_tamagotchi">
+            <End Role="Hotelrooms" EntitySet="Hotelrooms" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tamagotchi_hotelroom" Association="Self.fk_tamagotchi_hotelroom">
+            <End Role="Tamagochis" EntitySet="Tamagochis" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TamagotchiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TamagotchiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bookings" EntityType="TamagotchiModel.Booking" />
+          <EntitySet Name="Hotelrooms" EntityType="TamagotchiModel.Hotelroom" />
+          <EntitySet Name="Tamagochis" EntityType="TamagotchiModel.Tamagochi" />
+          <AssociationSet Name="fk_hotelroom_tamagotchi" Association="TamagotchiModel.fk_hotelroom_tamagotchi">
+            <End Role="Hotelroom" EntitySet="Hotelrooms" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tamagotchi_hotelroom" Association="TamagotchiModel.fk_tamagotchi_hotelroom">
+            <End Role="Tamagochi" EntitySet="Tamagochis" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Booking">
           <Key>
             <PropertyRef Name="Id" />
@@ -19,8 +100,8 @@
           <Property Name="End" Type="DateTime" Precision="3" />
           <Property Name="TamagotchiId" Type="Int32" Nullable="false" />
           <Property Name="HotelroomId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Hotelroom" Relationship="Self.fk_hotelroom_tamagotchi" FromRole="Booking" ToRole="Hotelroom" />
-          <NavigationProperty Name="Tamagochi" Relationship="Self.fk_tamagotchi_hotelroom" FromRole="Booking" ToRole="Tamagochi" />
+          <NavigationProperty Name="Hotelroom" Relationship="TamagotchiModel.fk_hotelroom_tamagotchi" FromRole="Booking" ToRole="Hotelroom" />
+          <NavigationProperty Name="Tamagochi" Relationship="TamagotchiModel.fk_tamagotchi_hotelroom" FromRole="Booking" ToRole="Tamagochi" />
         </EntityType>
         <EntityType Name="Hotelroom">
           <Key>
@@ -28,27 +109,27 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Beds" Type="Byte" Nullable="false" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <NavigationProperty Name="Bookings" Relationship="Self.fk_hotelroom_tamagotchi" FromRole="Hotelroom" ToRole="Booking" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <NavigationProperty Name="Bookings" Relationship="TamagotchiModel.fk_hotelroom_tamagotchi" FromRole="Hotelroom" ToRole="Booking" />
         </EntityType>
         <EntityType Name="Tamagochi">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Age" Type="Int32" Nullable="false" />
           <Property Name="Currency" Type="Decimal" Precision="11" Scale="2" />
           <Property Name="Level" Type="Int32" Nullable="false" />
           <Property Name="Health" Type="Int32" Nullable="false" />
           <Property Name="Hapinness" Type="Byte" Nullable="false" />
           <Property Name="Alive" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="Bookings" Relationship="Self.fk_tamagotchi_hotelroom" FromRole="Tamagochi" ToRole="Booking" />
+          <NavigationProperty Name="Bookings" Relationship="TamagotchiModel.fk_tamagotchi_hotelroom" FromRole="Tamagochi" ToRole="Booking" />
         </EntityType>
         <Association Name="fk_hotelroom_tamagotchi">
-          <End Role="Hotelroom" Type="Self.Hotelroom" Multiplicity="1" />
-          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <End Type="TamagotchiModel.Hotelroom" Role="Hotelroom" Multiplicity="1" />
+          <End Type="TamagotchiModel.Booking" Role="Booking" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Hotelroom">
               <PropertyRef Name="Id" />
@@ -59,8 +140,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_tamagotchi_hotelroom">
-          <End Role="Tamagochi" Type="Self.Tamagochi" Multiplicity="1" />
-          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <End Type="TamagotchiModel.Tamagochi" Role="Tamagochi" Multiplicity="1" />
+          <End Type="TamagotchiModel.Booking" Role="Booking" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tamagochi">
               <PropertyRef Name="Id" />
@@ -70,26 +151,48 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TamagotchiEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Bookings" EntityType="Self.Booking" />
-          <EntitySet Name="Hotelrooms" EntityType="Self.Hotelroom" />
-          <EntitySet Name="Tamagochis" EntityType="Self.Tamagochi" />
-          <AssociationSet Name="fk_hotelroom_tamagotchi" Association="Self.fk_hotelroom_tamagotchi">
-            <End Role="Hotelroom" EntitySet="Hotelrooms" />
-            <End Role="Booking" EntitySet="Bookings" />
-          </AssociationSet>
-          <AssociationSet Name="fk_tamagotchi_hotelroom" Association="Self.fk_tamagotchi_hotelroom">
-            <End Role="Tamagochi" EntitySet="Tamagochis" />
-            <End Role="Booking" EntitySet="Bookings" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="TamagotchiModelStoreContainer" CdmEntityContainer="TamagotchiEntities">
-    </EntityContainerMapping>
+          <EntitySetMapping Name="Bookings">
+            <EntityTypeMapping TypeName="TamagotchiModel.Booking">
+              <MappingFragment StoreEntitySet="Bookings">
+                <ScalarProperty Name="HotelroomId" ColumnName="HotelroomId" />
+                <ScalarProperty Name="TamagotchiId" ColumnName="TamagotchiId" />
+                <ScalarProperty Name="End" ColumnName="End" />
+                <ScalarProperty Name="Start" ColumnName="Start" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hotelrooms">
+            <EntityTypeMapping TypeName="TamagotchiModel.Hotelroom">
+              <MappingFragment StoreEntitySet="Hotelrooms">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Beds" ColumnName="Beds" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tamagochis">
+            <EntityTypeMapping TypeName="TamagotchiModel.Tamagochi">
+              <MappingFragment StoreEntitySet="Tamagochis">
+                <ScalarProperty Name="Alive" ColumnName="Alive" />
+                <ScalarProperty Name="Hapinness" ColumnName="Hapinness" />
+                <ScalarProperty Name="Health" ColumnName="Health" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->

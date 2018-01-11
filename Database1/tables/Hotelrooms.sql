@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Hotelroom]
+﻿CREATE TABLE [dbo].[Hotelrooms]
 (
 	[Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
     [Beds] TINYINT NOT NULL CHECK ([Beds] IN(2,3,5)), 

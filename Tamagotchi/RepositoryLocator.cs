@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ninject;
-using Tamagotchi.Domein.Models;
+using Tamagotchi.Models;
 using Tamagotchi.Domein.Repository;
+using Tamagotchi.Models;
 
 namespace Tamagotchi.Domein
 {
     public class RepositoryLocator
     {
         private static Lazy<RepositoryLocator> _repositories = new Lazy<RepositoryLocator>(() => new RepositoryLocator());
-        private static Mode CURRENT_MODE = Mode.DUMMY;
+        private static Mode CURRENT_MODE = Mode.DATABASE;
         private IKernel _kernel;
         private TamagotchiEntities _db;
 

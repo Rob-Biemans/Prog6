@@ -60,8 +60,8 @@
     <Folder Include="tables" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="tables\Booking.sql" />
-    <Build Include="tables\Hotelroom.sql" />
-    <Build Include="tables\Tamagotchi.sql" />
+    <Build Include="tables\Bookings.sql" />
+    <Build Include="tables\Hotelrooms.sql" />
+    <Build Include="tables\Tamagotchis.sql" />
   </ItemGroup>
 </Project>
