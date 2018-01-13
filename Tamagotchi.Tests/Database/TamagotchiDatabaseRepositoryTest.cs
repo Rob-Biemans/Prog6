@@ -2,10 +2,10 @@
 using Moq;
 using System.Collections.Generic;
 using System.Data.Entity;
-using Tamagotchi.Domein.Models;
 using Tamagotchi.Domein.Repository;
 using System;
 using System.Linq;
+using Tamagotchi.Models;
 
 namespace Tamagotchi.Tests
 {

@@ -47,7 +47,7 @@ namespace Tamagotchi.Controllers
         // POST: Hotelroom/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Start,End,TamagotchiId,HotelroomId")] Hotelroom hotelroom)
+        public ActionResult Create([Bind(Include = "Id,Beds,Type,Price")] Hotelroom hotelroom)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace Tamagotchi.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Start,End,TamagotchiId,HotelroomId")] Hotelroom hotelroom)
+        public ActionResult Edit([Bind(Include = "Id,Beds,Type,Price")] Hotelroom hotelroom)
         {
             if (ModelState.IsValid)
             {

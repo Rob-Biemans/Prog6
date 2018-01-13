@@ -10,9 +10,5 @@
 - Boeking mogelijk voor 1 Tamagotchi
 - 1 Nacht moet op de juiste manier laten verlopen
 
-- (TESTEN) Geen foute input kunnen geven of validatie meldingen zien wanneer wel het geval is. > frontend moet getest worden (voor backend zie Validatie folder)
-- Boeken en nachten moeten op de juiste manier verlopen
 
-
--- Dane
-Businesslogic -> NightController
+-- Index (Waar 'Start Nacht' staat) moet een overzicht tonen met tamagotchis die een boeking hebben

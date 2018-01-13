@@ -2,7 +2,7 @@
 using Moq;
 using System.Collections.Generic;
 using System.Data.Entity;
-using Tamagotchi.Domein.Models;
+using Tamagotchi.Models;
 using Tamagotchi.Domein.Repository;
 using System;
 using System.Linq;
@@ -40,8 +40,7 @@ namespace Tamagotchi.Tests
             Booking b = new Booking()
             {
                 Id = 7,
-                Start = new DateTime(2018, 5, 2, 0, 0, 0),
-                End = new DateTime(2019, 6, 7, 0, 0, 0),
+                Nights = 2,
                 HotelroomId = 1,
                 TamagotchiId = 1
             };
@@ -54,8 +53,7 @@ namespace Tamagotchi.Tests
             List<Booking> added = set.Object.Where(x => x.Id == 7).ToList();
             Assert.AreEqual(1, added.Count);
             Assert.AreEqual(7, added[0].Id);
-            Assert.AreEqual(new DateTime(2018, 5, 2, 0, 0, 0), added[0].Start);
-            Assert.AreEqual(new DateTime(2019, 6, 7, 0, 0, 0), added[0].End);
+            Assert.AreEqual(2, added[0].Nights);
             Assert.AreEqual(1, added[0].HotelroomId);
             Assert.AreEqual(1, added[0].TamagotchiId);
         }
@@ -91,8 +89,7 @@ namespace Tamagotchi.Tests
             Booking b = new Booking()
             {
                 Id = 1,
-                Start = new DateTime(2018, 4, 2, 0, 0, 0),
-                End = new DateTime(2019, 6, 7, 0, 0, 0),
+                Nights = 2,
                 HotelroomId = 2,
                 TamagotchiId = 1
             };
@@ -105,8 +102,7 @@ namespace Tamagotchi.Tests
             List<Booking> updated = set.Object.Where(x => x.Id == 1).ToList();
             Assert.AreEqual(2, updated.Count);
             Assert.AreEqual(1, updated[0].Id);
-            Assert.AreEqual(new DateTime(2018, 4, 2, 0, 0, 0), updated[0].Start);
-            Assert.AreEqual(new DateTime(2019, 6, 7, 0, 0, 0), updated[0].End);
+            Assert.AreEqual(2, updated[0].Nights);
             Assert.AreEqual(2, updated[0].HotelroomId);
             Assert.AreEqual(1, updated[0].TamagotchiId);
         }
@@ -134,8 +130,7 @@ namespace Tamagotchi.Tests
                 new Booking()
                 {
                     Id = 1,
-                    Start = new DateTime(2018, 4, 2, 0, 0, 0),
-                    End = new DateTime(2019, 6, 7, 0, 0, 0),
+                    Nights = 2,
                     HotelroomId = 2,
                     TamagotchiId = 1
                 },
@@ -143,8 +138,7 @@ namespace Tamagotchi.Tests
                 new Booking()
                 {
                     Id = 2,
-                    Start = new DateTime(2018, 3, 5, 0, 0, 0),
-                    End = new DateTime(2019, 7, 4, 0, 0, 0),
+                    Nights = 2,
                     HotelroomId = 3,
                     TamagotchiId = 1
                 },
@@ -152,8 +146,7 @@ namespace Tamagotchi.Tests
                 new Booking()
                 {
                     Id = 3,
-                    Start = new DateTime(2018, 2, 1, 0, 0, 0),
-                    End = new DateTime(2019, 8, 9, 0, 0, 0),
+                    Nights = 2,
                     HotelroomId = 1,
                     TamagotchiId = 1
                 },
@@ -161,8 +154,7 @@ namespace Tamagotchi.Tests
                 new Booking()
                 {
                     Id = 4,
-                    Start = new DateTime(2018, 1, 2, 0, 0, 0),
-                    End = new DateTime(2019, 7, 2, 0, 0, 0),
+                    Nights = 2,
                     HotelroomId = 4,
                     TamagotchiId = 2
                 },
@@ -170,8 +162,7 @@ namespace Tamagotchi.Tests
                 new Booking()
                 {
                     Id = 5,
-                    Start = new DateTime(2018, 8, 8, 0, 0, 0),
-                    End = new DateTime(2019, 6, 1, 0, 0, 0),
+                    Nights = 2,
                     HotelroomId = 5,
                     TamagotchiId = 4
                 },
@@ -179,8 +170,7 @@ namespace Tamagotchi.Tests
                 new Booking()
                 {
                     Id = 6,
-                    Start = new DateTime(2018, 5, 2, 0, 0, 0),
-                    End = new DateTime(2019, 6, 7, 0, 0, 0),
+                    Nights = 2,
                     HotelroomId = 6,
                     TamagotchiId = 2
                 }

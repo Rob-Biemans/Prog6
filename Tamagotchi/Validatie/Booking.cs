@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Tamagotchi.Domein.Models
+namespace Tamagotchi.Models
 {
     [MetadataType(typeof(BookingAttributes))]
     public partial class Booking
@@ -11,18 +11,12 @@ namespace Tamagotchi.Domein.Models
         {
             [Key]
             public int Id { get; set; }
-            [Required(ErrorMessage = "Start datum is verplicht.")]
-            [DisplayName("Start")]
-            [DataType(DataType.Date)]
-            public System.DateTime Start { get; set; }
-            [Required(ErrorMessage = "Eind datum is verplicht.")]
-            [DisplayName("Einde")]
-            [DataType(DataType.Date)]
-            public Nullable<System.DateTime> End { get; set; }
-
-            [Required(ErrorMessage = "Een tamagotchi is verplicht.")]
+            [Required(ErrorMessage = "Amount of nights is required.")]
+            [DisplayName("Nights")]
+            public int Nights { get; set; }
+            [Required(ErrorMessage = "A tamagotchi is required.")]
             public int TamagotchiId { get; set; }
-            [Required(ErrorMessage = "Een Hotelkamer is verplicht.")]
+            [Required(ErrorMessage = "A Hotelroom is required.")]
             public int HotelroomId { get; set; }
         }
     }

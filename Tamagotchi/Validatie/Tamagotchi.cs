@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Tamagotchi.Domein.Models
+namespace Tamagotchi.Models
 {
     [MetadataType(typeof(TamagotchiAttributes))]
     public partial class Tamagochi
@@ -11,34 +11,34 @@ namespace Tamagotchi.Domein.Models
         {
             [Key]
             public int Id { get; set; }
-            [Required(ErrorMessage = "Naam is verplicht.")]
+            [Required(ErrorMessage = "Name is required.")]
             [DisplayName("Name")]
-            [MinLength(1, ErrorMessage = "Lengte van de naam moet minimaal uit 1 letter bestaan.")]
-            [MaxLength(10, ErrorMessage = "Lengte van de naam mag maximaal uit 10 letters bestaan.")]
+            [MinLength(1, ErrorMessage = "Length must be atleast 1.")]
+            [MaxLength(10, ErrorMessage = "The maximum allowed length is 10.")]
             public string Name { get; set; }
-            [Required(ErrorMessage = "Leeftijd is verplicht.")]
+            [Required(ErrorMessage = "Age is required.")]
             [DisplayName("Age")]
             [DefaultValue(0)]
             public int Age { get; set; }
-            [Required(ErrorMessage = "Geld is verplicht.")]
+            [Required(ErrorMessage = "Currency is required.")]
             [DisplayName("Currency")]
             [DefaultValue(100)]
             public Nullable<decimal> Currency { get; set; }
-            [Required(ErrorMessage = "Level is verplicht.")]
+            [Required(ErrorMessage = "Level is required.")]
             [DisplayName("Level")]
             [DefaultValue(0)]
             public int Level { get; set; }
-            [Required(ErrorMessage = "Gezondheid is verplicht.")]
+            [Required(ErrorMessage = "Health is required.")]
             [DisplayName("Health")]
-            [Range(0, 100, ErrorMessage = "Gezondheid mag maar tussen de 0 en 100 bedragen.")]
+            [Range(0, 100, ErrorMessage = "Health must be between 0 and 100.")]
             [DefaultValue(100)]
             public int Health { get; set; }
-            [Required(ErrorMessage = "Verveling is verplicht.")]
+            [Required(ErrorMessage = "Happiness is required.")]
             [DisplayName("Happiness")]
-            [Range(0, 100, ErrorMessage = "Verveling mag maar tussen de 0 en 100 bedragen.")]
+            [Range(0, 100, ErrorMessage = "Happiness must be between 0 and 100.")]
             [DefaultValue(0)]
             public byte Hapinness { get; set; }
-            [Required(ErrorMessage = "Levend of Dood is verplicht.")]
+            [Required(ErrorMessage = "Alive or Death is required.")]
             [DisplayName("Alive")]
             [DefaultValue(1)]
             public byte Alive { get; set; }
