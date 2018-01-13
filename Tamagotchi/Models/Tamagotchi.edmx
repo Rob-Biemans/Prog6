@@ -10,8 +10,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Start" Type="datetime" Nullable="false" />
-          <Property Name="End" Type="datetime" />
+          <Property Name="Nights" Type="int" Nullable="false" />
           <Property Name="TamagotchiId" Type="int" Nullable="false" />
           <Property Name="HotelroomId" Type="int" Nullable="false" />
         </EntityType>
@@ -96,8 +95,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Start" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="End" Type="DateTime" Precision="3" />
+          <Property Name="Nights" Type="Int32" Nullable="false" />
           <Property Name="TamagotchiId" Type="Int32" Nullable="false" />
           <Property Name="HotelroomId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Hotelroom" Relationship="TamagotchiModel.fk_hotelroom_tamagotchi" FromRole="Booking" ToRole="Hotelroom" />
@@ -151,7 +149,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -162,8 +160,7 @@
               <MappingFragment StoreEntitySet="Bookings">
                 <ScalarProperty Name="HotelroomId" ColumnName="HotelroomId" />
                 <ScalarProperty Name="TamagotchiId" ColumnName="TamagotchiId" />
-                <ScalarProperty Name="End" ColumnName="End" />
-                <ScalarProperty Name="Start" ColumnName="Start" />
+                <ScalarProperty Name="Nights" ColumnName="Nights" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

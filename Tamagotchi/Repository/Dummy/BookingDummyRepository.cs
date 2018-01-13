@@ -18,8 +18,7 @@ namespace Tamagotchi.Domein.Repository
             _bookingList.Add(new Booking()
             {
                 Id = 1,
-                Start = new DateTime(2018, 6, 2, 0, 0, 0),
-                End = new DateTime(2018, 6, 7, 0, 0, 0),
+                Nights = 1,
                 HotelroomId = 1,
                 TamagotchiId = 1
             });
@@ -27,8 +26,7 @@ namespace Tamagotchi.Domein.Repository
             _bookingList.Add(new Booking()
             {
                 Id = 2,
-                Start = new DateTime(2017, 6, 3, 0, 0, 0),
-                End = new DateTime(2017, 6, 9, 0, 0, 0),
+                Nights = 1,
                 HotelroomId = 2,
                 TamagotchiId = 1
             });
@@ -60,8 +58,7 @@ namespace Tamagotchi.Domein.Repository
 
             if (b != null)
             {
-                b.Start = obj.Start;
-                b.End = obj.End;
+                b.Nights = obj.Nights;
                 b.HotelroomId = obj.HotelroomId;
                 b.TamagotchiId = obj.TamagotchiId;
             }

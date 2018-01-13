@@ -60,8 +60,11 @@
     <Folder Include="tables" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="tables\Bookings.sql" />
+    <Build Include="tables\Booking.sql" />
     <Build Include="tables\Hotelrooms.sql" />
     <Build Include="tables\Tamagotchis.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Database1.refactorlog" />
   </ItemGroup>
 </Project>

@@ -1,8 +1,7 @@
-﻿CREATE TABLE [dbo].[Bookings]
+﻿CREATE TABLE [dbo].[Booking]
 (
 	[Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	[Start] DATETIME NOT NULL,
-	[End] DATETIME NULL,
+	[Nights] INT NOT NULL,
 	[TamagotchiId] INT NOT NULL,
 	[HotelroomId] INT NOT NULL,
 	CONSTRAINT [fk_tamagotchi_hotelroom] FOREIGN KEY (TamagotchiId) REFERENCES [Tamagochis](Id),
