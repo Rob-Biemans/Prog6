@@ -40,10 +40,9 @@ namespace Tamagotchi.Domein.Repository
 
             if (b != null)
             {
-                b.Start = obj.Start;
                 b.Hotelroom = obj.Hotelroom;
                 b.HotelroomId = obj.HotelroomId;
-                b.End = obj.End;
+                b.Nights = obj.Nights;
                 b.Tamagochi = obj.Tamagochi;
                 b.TamagotchiId = obj.TamagotchiId;
             }

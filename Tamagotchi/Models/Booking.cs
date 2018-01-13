@@ -15,8 +15,7 @@ namespace Tamagotchi.Models
     public partial class Booking
     {
         public int Id { get; set; }
-        public System.DateTime Start { get; set; }
-        public Nullable<System.DateTime> End { get; set; }
+        public int Nights { get; set; }
         public int TamagotchiId { get; set; }
         public int HotelroomId { get; set; }
     

@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="113145b8adb94b6f854e16862704f476" Name="Diagram1">
-        <EntityTypeShape EntityType="TamagotchiModel.Booking" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="TamagotchiModel.Hotelroom" Width="1.5" PointX="0.75" PointY="1.125" />
-        <EntityTypeShape EntityType="TamagotchiModel.Tamagochi" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="TamagotchiModel.Booking" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="TamagotchiModel.Hotelroom" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="TamagotchiModel.Tamagochi" Width="1.5" PointX="0.75" PointY="1" />
         <AssociationConnector Association="TamagotchiModel.fk_hotelroom_tamagotchi" />
         <AssociationConnector Association="TamagotchiModel.fk_tamagotchi_hotelroom" />
       </Diagram>
