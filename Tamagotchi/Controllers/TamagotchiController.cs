@@ -43,11 +43,10 @@ namespace Tamagotchi.Controllers
             return View();
         }
 
-
         // POST: Tamagotchi/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Start,End,TamagotchiId,HotelroomId")] Tamagochi tamagotchi)
+        public ActionResult Create([Bind(Include = "Id,Name,Age,Currency,Level,Health,Hapinness,Alive")] Tamagochi tamagotchi)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +79,7 @@ namespace Tamagotchi.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Start,End,TamagotchiId,HotelroomId")] Tamagochi tamagotchi)
+        public ActionResult Edit([Bind(Include = "Id,Name,Age,Currency,Level,Health,Hapinness,Alive")] Tamagochi tamagotchi)
         {
             if (ModelState.IsValid)
             {

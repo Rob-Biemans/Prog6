@@ -1,142 +1,96 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using Tamagotchi.Domein.Repository;
-using System;
 using System.Linq;
+using System.Web.Mvc;
+using Tamagotchi.Controllers;
+using Tamagotchi.Domein;
+using Tamagotchi.Domein.Repository;
 using Tamagotchi.Models;
 
-namespace Tamagotchi.Tests
+namespace Tamagotchi.Tests.Controllers
 {
     [TestClass]
-    public class TamagotchiDatabaseRepositoryTest
+    public class TamagotchiControllerTest
     {
+
         [TestMethod]
-        public void TamagotchiDatabaseGetAll()
+        public void GetTamagotchiIndex()
         {
             // Arrange
-            ITamagotchiRepository repository;
-            Mock<DbSet<Tamagochi>> set;
-            Mock<TamagotchiEntities> context;
-            GetContext(out repository, out set, out context);
+            TamagotchiController controller = new TamagotchiController();
 
             // Act
-            List<Tamagochi> a = repository.GetAll();
+            ViewResult result = controller.Index() as ViewResult;
 
             // Assert
-            Assert.AreEqual(6, a.Count);
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
-        public void TamagotchiDatabaseAdd()
+        public void GetTamagotchiCreate()
         {
             // Arrange
-            ITamagotchiRepository repository;
-            Mock<DbSet<Tamagochi>> set;
-            Mock<TamagotchiEntities> context;
-            GetContext(out repository, out set, out context);
-
-            Tamagochi t = new Tamagochi()
-            {
-                Id = 7,
-                Name = "Roberto v Ethopie",
-                Level = 0,
-                Age = 0,
-                Alive = 1,
-                Currency = 100,
-                Hapinness = 0,
-                Health = 100
-            };
+            TamagotchiController controller = new TamagotchiController();
 
             // Act
-            repository.Add(t);
+            ViewResult result = controller.Create() as ViewResult;
 
             // Assert
-            set.Verify(x => x.Add(It.IsAny<Tamagochi>()), Times.Once());
-            List<Tamagochi> added = set.Object.Where(x => x.Id == 7).ToList();
-            Assert.AreEqual(1, added.Count);
-            Assert.AreEqual(7, added[0].Id);
-            Assert.AreEqual("Roberto v Ethopie", added[0].Name);
-            Assert.AreEqual(0, added[0].Level);
-            Assert.AreEqual(0, added[0].Age);
-            Assert.AreEqual(1, added[0].Alive);
-            Assert.AreEqual(100, added[0].Currency);
-            Assert.AreEqual(0, added[0].Hapinness);
-            Assert.AreEqual(100, added[0].Health);
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
-        public void TamagotchiDatabaseRemove()
+        public void GetTamagotchiEdit()
         {
             // Arrange
-            ITamagotchiRepository repository;
-            Mock<DbSet<Tamagochi>> set;
-            Mock<TamagotchiEntities> context;
-            GetContext(out repository, out set, out context);
-
-            Tamagochi t = set.Object.Where(x => x.Id == 1).ToList()[0];
+            TamagotchiController controller = new TamagotchiController();
 
             // Act
-            repository.Remove(t);
+            ViewResult result = controller.Edit(1) as ViewResult;
 
             // Assert
-            set.Verify(x => x.Remove(It.IsAny<Tamagochi>()), Times.Once());
-            Assert.AreEqual(0, set.Object.Where(x => x.Id == 1).ToList().Count);
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
-        public void TamagotchiDatabaseUpdate()
+        public void GetTamagotchiDelete()
         {
             // Arrange
-            ITamagotchiRepository repository;
-            Mock<DbSet<Tamagochi>> set;
-            Mock<TamagotchiEntities> context;
-            GetContext(out repository, out set, out context);
-
-            Tamagochi t = new Tamagochi()
-            {
-                Id = 1,
-                Name = "Daano v Ethopie",
-                Level = 0,
-                Age = 0,
-                Alive = 1,
-                Currency = 100,
-                Hapinness = 0,
-                Health = 100
-            };
+            TamagotchiController controller = new TamagotchiController();
 
             // Act
-            repository.Add(t);
+            ViewResult result = controller.Delete(1) as ViewResult;
 
             // Assert
-            set.Verify(x => x.Add(It.IsAny<Tamagochi>()), Times.Once());
-            List<Tamagochi> updated = set.Object.Where(x => x.Id == 1).ToList();
-            Assert.AreEqual(2, updated.Count);
-            Assert.AreEqual(1, updated[0].Id);
-            Assert.AreEqual("Daano v Ethopie", updated[0].Name);
-            Assert.AreEqual(0, updated[0].Level);
-            Assert.AreEqual(0, updated[0].Age);
-            Assert.AreEqual(1, updated[0].Alive);
-            Assert.AreEqual(100, updated[0].Currency);
-            Assert.AreEqual(0, updated[0].Hapinness);
-            Assert.AreEqual(100, updated[0].Health);
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
-        public void TamagotchiDatabaseForceRefresh()
+        public void GetTamagotchiDetails()
         {
             // Arrange
-            ITamagotchiRepository repository;
-            Mock<DbSet<Tamagochi>> set;
-            Mock<TamagotchiEntities> context;
-            GetContext(out repository, out set, out context);
+            TamagotchiController controller = new TamagotchiController();
 
             // Act
-            bool refreshed = repository.ForceRefresh();
+            ViewResult result = controller.Details(1) as ViewResult;
 
             // Assert
-            Assert.IsTrue(refreshed);
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void PostTamagotchiEdit()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void PostTamagotchiDelete()
+        {
+            throw new NotImplementedException();
         }
 
         private void GetContext(out ITamagotchiRepository repository, out Mock<DbSet<Tamagochi>> set, out Mock<TamagotchiEntities> context)

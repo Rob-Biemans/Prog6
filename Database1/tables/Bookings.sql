@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Booking]
+﻿CREATE TABLE [dbo].[Bookings]
 (
 	[Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	[Nights] INT NOT NULL,

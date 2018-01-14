@@ -1,126 +1,95 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using Tamagotchi.Models;
-using Tamagotchi.Domein.Repository;
-using System;
 using System.Linq;
+using System.Web.Mvc;
+using Tamagotchi.Controllers;
+using Tamagotchi.Domein;
+using Tamagotchi.Domein.Repository;
+using Tamagotchi.Models;
 
-namespace Tamagotchi.Tests
+namespace Tamagotchi.Tests.Controllers
 {
     [TestClass]
-    public class BookingDatabaseRepositoryTest
+    public class BookingControllerTest
     {
         [TestMethod]
-        public void BookingDatabaseGetAll()
+        public void GetBookingIndex()
         {
             // Arrange
-            IBookingRepository repository;
-            Mock<DbSet<Booking>> set;
-            Mock<TamagotchiEntities> context;
-            GetContext(out repository, out set, out context);
+            BookingController controller = new BookingController();
 
             // Act
-            List<Booking> a = repository.GetAll();
+            ViewResult result = controller.Index() as ViewResult;
 
             // Assert
-            Assert.AreEqual(6, a.Count);
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
-        public void BookingDatabaseAdd()
+        public void GetBookingCreate()
         {
             // Arrange
-            IBookingRepository repository;
-            Mock<DbSet<Booking>> set;
-            Mock<TamagotchiEntities> context;
-            GetContext(out repository, out set, out context);
-
-            Booking b = new Booking()
-            {
-                Id = 7,
-                Nights = 2,
-                HotelroomId = 1,
-                TamagotchiId = 1
-            };
+            BookingController controller = new BookingController();
 
             // Act
-            repository.Add(b);
+            ViewResult result = controller.Create() as ViewResult;
 
             // Assert
-            set.Verify(x => x.Add(It.IsAny<Booking>()), Times.Once());
-            List<Booking> added = set.Object.Where(x => x.Id == 7).ToList();
-            Assert.AreEqual(1, added.Count);
-            Assert.AreEqual(7, added[0].Id);
-            Assert.AreEqual(2, added[0].Nights);
-            Assert.AreEqual(1, added[0].HotelroomId);
-            Assert.AreEqual(1, added[0].TamagotchiId);
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
-        public void BookingDatabaseRemove()
+        public void GetBookingEdit()
         {
             // Arrange
-            IBookingRepository repository;
-            Mock<DbSet<Booking>> set;
-            Mock<TamagotchiEntities> context;
-            GetContext(out repository, out set, out context);
-
-            Booking b = set.Object.Where(x => x.Id == 1).ToList()[0];
+            BookingController controller = new BookingController();
 
             // Act
-            repository.Remove(b);
+            ViewResult result = controller.Edit(1) as ViewResult;
 
             // Assert
-            set.Verify(x => x.Remove(It.IsAny<Booking>()), Times.Once());
-            Assert.AreEqual(0, set.Object.Where(x => x.Id == 1).ToList().Count);
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
-        public void BookingDatabaseUpdate()
+        public void GetBookingDelete()
         {
             // Arrange
-            IBookingRepository repository;
-            Mock<DbSet<Booking>> set;
-            Mock<TamagotchiEntities> context;
-            GetContext(out repository, out set, out context);
-
-            Booking b = new Booking()
-            {
-                Id = 1,
-                Nights = 2,
-                HotelroomId = 2,
-                TamagotchiId = 1
-            };
+            BookingController controller = new BookingController();
 
             // Act
-            repository.Add(b);
+            ViewResult result = controller.Delete(1) as ViewResult;
 
             // Assert
-            set.Verify(x => x.Add(It.IsAny<Booking>()), Times.Once());
-            List<Booking> updated = set.Object.Where(x => x.Id == 1).ToList();
-            Assert.AreEqual(2, updated.Count);
-            Assert.AreEqual(1, updated[0].Id);
-            Assert.AreEqual(2, updated[0].Nights);
-            Assert.AreEqual(2, updated[0].HotelroomId);
-            Assert.AreEqual(1, updated[0].TamagotchiId);
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
-        public void BookingDatabaseForceRefresh()
+        public void GetBookingDetails()
         {
             // Arrange
-            IBookingRepository repository;
-            Mock<DbSet<Booking>> set;
-            Mock<TamagotchiEntities> context;
-            GetContext(out repository, out set, out context);
+            BookingController controller = new BookingController();
 
             // Act
-            bool refreshed = repository.ForceRefresh();
+            ViewResult result = controller.Details(1) as ViewResult;
 
             // Assert
-            Assert.IsTrue(refreshed);
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void PostBookingEdit()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void PostBookingDelete()
+        {
+            throw new NotImplementedException();
         }
 
         private void GetContext(out IBookingRepository repository, out Mock<DbSet<Booking>> set, out Mock<TamagotchiEntities> context)

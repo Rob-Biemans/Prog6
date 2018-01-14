@@ -8,6 +8,7 @@ namespace Tamagotchi
     {
         public void Configuration(IAppBuilder app)
         {
+            ConfigureDependencyContainer();
             ConfigureAuth(app);
         }
     }
