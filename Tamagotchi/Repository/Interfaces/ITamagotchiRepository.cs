@@ -1,4 +1,5 @@
-﻿using Tamagotchi.Models;
+﻿using System.Collections.Generic;
+using Tamagotchi.Models;
 
 namespace Tamagotchi.Domein.Repository
 {
@@ -6,5 +7,6 @@ namespace Tamagotchi.Domein.Repository
     {
         Tamagochi GetById(int? ID);
         bool ForceRefresh();
+        List<Tamagochi> GetAvailable();
     }
 }

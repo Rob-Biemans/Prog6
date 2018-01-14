@@ -92,5 +92,10 @@ namespace Tamagotchi.Domein.Repository
         {
             return true;
         }
+
+        public List<Tamagochi> GetAvailable()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

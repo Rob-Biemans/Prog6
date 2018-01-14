@@ -50,5 +50,10 @@ namespace Tamagotchi.Domein.Repository
         {
             return true;
         }
+
+        public List<Hotelroom> GetAvailable()
+        {
+            return _db.Hotelrooms.Where(h => h.Beds > h.Bookings.Count).ToList();
+        }
     }
 }

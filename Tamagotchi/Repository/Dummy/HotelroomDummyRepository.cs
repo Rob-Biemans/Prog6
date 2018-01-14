@@ -84,5 +84,10 @@ namespace Tamagotchi.Domein.Repository
         {
             return true;
         }
+
+        public List<Hotelroom> GetAvailable()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -50,6 +50,11 @@ namespace Tamagotchi.Domein.Repository
             }
         }
 
+        public List<Tamagochi> GetAvailable()
+        {
+            return _db.Tamagochis.Where(t => t.Bookings.Count < 1).Where(t => t.Alive == 1).ToList();
+        }
+
         public bool ForceRefresh()
         {
             return true;
