@@ -13,6 +13,8 @@ namespace Tamagotchi.Controllers
     public class BookingController : Controller
     {
         private IBookingRepository _bookingRepo = RepositoryLocator.Repositories.BookingRepository;
+        private ITamagotchiRepository tamaRepo = RepositoryLocator.Repositories.TamagotchiRepository;
+        private IHotelroomRepository hotelRepo = RepositoryLocator.Repositories.HotelroomRepository;
 
         // GET: Booking
         public ActionResult Index()
@@ -42,9 +44,7 @@ namespace Tamagotchi.Controllers
             _bookingRepo.ForceRefresh();
             List<SelectListItem> items = new List<SelectListItem>();
             List<SelectListItem> hotelrooms = new List<SelectListItem>();
-            TamagotchiDatabaseRepository tamaRepo = new TamagotchiDatabaseRepository(new TamagotchiEntities());
             tamaRepo.GetAll().ForEach(t => items.Add(new SelectListItem { Text = t.Name, Value = t.Id.ToString() }));
-            HotelroomDatabaseRepository hotelRepo = new HotelroomDatabaseRepository(new TamagotchiEntities());
             hotelRepo.GetAll().ForEach(h => hotelrooms.Add(new SelectListItem { Text = h.Type, Value = h.Id.ToString() }));
             ViewBag.TamagotchiName = items;
             ViewBag.HotelRooms = hotelrooms;

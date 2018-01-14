@@ -16,7 +16,7 @@ namespace Tamagotchi.Tests.Controllers
     public class NightControllerTest
     {
         [TestMethod]
-        public void GetBookingIndex()
+        public void NightControllerIndex()
         {
             // Arrange
             NightController controller = new NightController();

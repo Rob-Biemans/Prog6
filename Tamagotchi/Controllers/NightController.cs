@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Tamagotchi.Domein;
 using Tamagotchi.Domein.Repository;
 using Tamagotchi.Models;
 
@@ -10,6 +11,8 @@ namespace Tamagotchi.Controllers
 {
     public class NightController : Controller
     {
+        private IBookingRepository _bookingRepo = RepositoryLocator.Repositories.BookingRepository;
+
         private const string REST = "REST";
         private const string FIGHT = "FIGHT";
         private const string GAME = "GAME";
@@ -22,8 +25,7 @@ namespace Tamagotchi.Controllers
         
         public ActionResult Index()
         {
-            BookingDatabaseRepository repo = new BookingDatabaseRepository(new TamagotchiEntities());
-            var bookings = repo.GetAll();
+            var bookings = _bookingRepo.GetAll();
 
             foreach (var booking in bookings)
             {
@@ -57,7 +59,7 @@ namespace Tamagotchi.Controllers
                                     booking2.Tamagochi.Alive = 0;
                                 booking.Tamagochi.Level += 1;
                                 booking.Tamagochi.Currency += 20;
-                                repo.Update(booking2);
+                                _bookingRepo.Update(booking2);
                             }
                             else
                             {
@@ -67,7 +69,7 @@ namespace Tamagotchi.Controllers
                                     booking.Tamagochi.Alive = 0;
                                 booking2.Tamagochi.Level += 1;
                                 booking2.Tamagochi.Currency += 20;
-                                repo.Update(booking2);
+                                _bookingRepo.Update(booking2);
                             }
                         }
                         break;
@@ -80,7 +82,7 @@ namespace Tamagotchi.Controllers
                     booking.Tamagochi.Health -= 20;
                 if (booking.Tamagochi.Health <= 0)
                     booking.Tamagochi.Alive = 0;
-                repo.Update(booking);
+                _bookingRepo.Update(booking);
             }
 
 
