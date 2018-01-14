@@ -1,6 +1,7 @@
 ﻿@model Tamagotchi.Models.Booking
 @{ 
     var tamas = new SelectList(ViewBag.TamagotchiName, "Value", "Text");
+    var rooms = new SelectList(ViewBag.HotelRooms, "Value", "Text");
 }
 <div class="container">
     <div class="row">
@@ -36,7 +37,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.HotelroomId, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.DropDownList("HotelRooms")
+                                @Html.DropDownListFor(model => model.HotelroomId, rooms)
                                 @Html.ValidationMessageFor(model => model.HotelroomId, "", new { @class = "text-danger" })
                             </div>
                         </div>
