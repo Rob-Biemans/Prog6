@@ -18,7 +18,7 @@ namespace Tamagotchi.Controllers
         public ActionResult Index()
         {
             _tamagotchiRepo.ForceRefresh();
-            return View(_tamagotchiRepo.GetAll());
+            return View(_tamagotchiRepo.GetAll().OrderByDescending(x => x.Alive));
         }
 
         // GET: Tamagotchi/Details/5

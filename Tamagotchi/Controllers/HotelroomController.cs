@@ -112,9 +112,12 @@ namespace Tamagotchi.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Hotelroom hotelroom = _hotelroomRepo.GetById(id);
-            _hotelroomRepo.Remove(hotelroom);
-            RepositoryLocator.Repositories.Save();
+            if (_hotelroomRepo.GetAll().Count > 4)
+            {
+                Hotelroom hotelroom = _hotelroomRepo.GetById(id);
+                _hotelroomRepo.Remove(hotelroom);
+                RepositoryLocator.Repositories.Save();
+            }
             return RedirectToAction("Index");
         }
     }
