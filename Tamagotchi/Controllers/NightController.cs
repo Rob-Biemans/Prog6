@@ -13,6 +13,7 @@ namespace Tamagotchi.Controllers
         private const string FIGHT = "FIGHT";
         private const string GAME = "GAME";
         private const string WORK = "WORK";
+        private const string MISC = "MISC";
         //public ActionResult Index()
         //{
         //    return View();
@@ -44,9 +45,39 @@ namespace Tamagotchi.Controllers
                             break;
                         case FIGHT:
                             // TODO: Implement
-                            throw new NotImplementedException();
+                            if (booking.Hotelroom.Bookings.Count > 1)
+                            {
+                                Booking booking2 = booking.Hotelroom.Bookings.Where(b => b.Tamagochi.Id != booking.Tamagochi.Id).First();
+                                Random ran = new Random();
+                                if (ran.NextDouble() >= 0.5)
+                                {
+                                    booking2.Tamagochi.Health -= 30;
+                                    booking2.Tamagochi.Currency -= 20;
+                                    if (booking2.Tamagochi.Health <= 0)
+                                        booking2.Tamagochi.Alive = 0;
+                                    booking.Tamagochi.Level += 1;
+                                    booking.Tamagochi.Currency += 20;
+                                }
+                                else
+                                {
+                                    booking.Tamagochi.Health -= 30;
+                                    booking.Tamagochi.Currency -= 20;
+                                    if (booking.Tamagochi.Health <= 0)
+                                        booking.Tamagochi.Alive = 0;
+                                    booking2.Tamagochi.Level += 1;
+                                    booking2.Tamagochi.Currency += 20;
+                                }
+                            }
                             break;
+                        case MISC:
+                            booking.Tamagochi.Alive = 0;
+                            break;
+                            
                     }
+                    if (booking.Tamagochi.Hapinness >= 70)
+                        booking.Tamagochi.Health -= 20;
+                    if (booking.Tamagochi.Health <= 0)
+                        booking.Tamagochi.Alive = 0;
                 }
                 context.SaveChanges();
             }
