@@ -121,6 +121,7 @@
   <ItemGroup>
     <Compile Include="Controllers\BookingControllerTest.cs" />
     <Compile Include="Controllers\HotelroomControllerTest.cs" />
+    <Compile Include="Controllers\NightControllerTest.cs" />
     <Compile Include="Controllers\TamagotchiControllerTest.cs" />
     <Compile Include="Database\BookingDatabaseRepositoryTest.cs" />
     <Compile Include="Database\HotelroomDatabaseRepositoryTest.cs" />

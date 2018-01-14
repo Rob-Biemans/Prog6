@@ -67,4 +67,7 @@
   <ItemGroup>
     <RefactorLog Include="Database1.refactorlog" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="seeder.sql" />
+  </ItemGroup>
 </Project>
