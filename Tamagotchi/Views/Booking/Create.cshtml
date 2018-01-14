@@ -1,5 +1,7 @@
 ﻿@model Tamagotchi.Models.Booking
-
+@{ 
+    var tamas = new SelectList(ViewBag.TamagotchiName, "Value", "Text");
+}
 <div class="container">
     <div class="row">
         <div class="box">
@@ -30,7 +32,7 @@
                                 @Html.ValidationMessageFor(model => model.TamagotchiId, "", new { @class = "text-danger" })
                             </div>*@
                             <div class="col-md-10">
-                                @Html.DropDownList("TamagotchiName")
+                                @Html.DropDownListFor(model => model.TamagotchiId, tamas)
                                 @Html.ValidationMessageFor(model => model.TamagotchiId, "", new { @class = "text-danger" })
                             </div>
                         </div>
