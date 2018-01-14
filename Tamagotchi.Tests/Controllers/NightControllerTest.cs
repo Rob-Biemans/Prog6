@@ -15,6 +15,17 @@ namespace Tamagotchi.Tests.Controllers
     [TestClass]
     public class NightControllerTest
     {
+        [TestMethod]
+        public void GetBookingIndex()
+        {
+            // Arrange
+            NightController controller = new NightController();
 
+            // Act
+            ViewResult result = controller.Index() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
     }
 }
