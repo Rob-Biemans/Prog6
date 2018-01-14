@@ -93,31 +93,5 @@ namespace Tamagotchi.Controllers
 
             return View();
         }
-
-        private Booking ProcessBooking(Booking booking)
-        {
-            switch (booking.Hotelroom.Type)
-            {
-                case REST:
-                    booking.Tamagochi.Currency -= 10;
-                    booking.Tamagochi.Health += 20;
-                    booking.Tamagochi.Hapinness += 10;
-                    break;
-                case GAME:
-                    booking.Tamagochi.Currency -= 20;
-                    booking.Tamagochi.Hapinness = 0;
-                    break;
-                case WORK:
-                    Random r = new Random();
-                    booking.Tamagochi.Currency += r.Next(10, 60);
-                    booking.Tamagochi.Hapinness += 20;
-                    break;
-                case FIGHT:
-                    // TODO: Implement
-                    throw new NotImplementedException();
-                    break;
-            }
-            return booking;
-        }
     }
 }
