@@ -42,11 +42,10 @@ namespace Tamagotchi.Controllers
             _bookingRepo.ForceRefresh();
             List<SelectListItem> items = new List<SelectListItem>();
             List<SelectListItem> hotelrooms = new List<SelectListItem>();
-            using (var context = new TamagotchiEntities())
-            {
-                context.Tamagochis.ToList().ForEach(t => items.Add(new SelectListItem { Text = t.Name, Value = t.Id.ToString() }));
-                context.Hotelrooms.Where(h => h.Bookings.Count < 0).ToList().ForEach(h => hotelrooms.Add(new SelectListItem { Text = h.Type, Value = h.Id.ToString() }));
-            }
+            TamagotchiDatabaseRepository tamaRepo = new TamagotchiDatabaseRepository(new TamagotchiEntities());
+            tamaRepo.GetAll().ForEach(t => items.Add(new SelectListItem { Text = t.Name, Value = t.Id.ToString() }));
+            HotelroomDatabaseRepository hotelRepo = new HotelroomDatabaseRepository(new TamagotchiEntities());
+            hotelRepo.GetAll().ForEach(h => hotelrooms.Add(new SelectListItem { Text = h.Type, Value = h.Id.ToString() }));
             ViewBag.TamagotchiName = items;
             ViewBag.HotelRooms = hotelrooms;
             return View();
