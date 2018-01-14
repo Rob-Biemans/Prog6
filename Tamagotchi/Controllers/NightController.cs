@@ -82,6 +82,7 @@ namespace Tamagotchi.Controllers
                     booking.Tamagochi.Health -= 20;
                 if (booking.Tamagochi.Health <= 0)
                     booking.Tamagochi.Alive = 0;
+                booking.Tamagochi.Level += 1;
                 booking.Nights -= 1;
                 if (booking.Nights <= 0)
                     _bookingRepo.Remove(booking);
