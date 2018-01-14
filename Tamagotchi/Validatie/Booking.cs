@@ -11,8 +11,8 @@ namespace Tamagotchi.Models
         {
             [Key]
             public int Id { get; set; }
-            [Required(ErrorMessage = "Amount of nights is required.")]
             [DisplayName("Nights")]
+            [Required(ErrorMessage = "Amount of nights is required.")]
             public int Nights { get; set; }
             [Required(ErrorMessage = "A tamagotchi is required.")]
             public int TamagotchiId { get; set; }
