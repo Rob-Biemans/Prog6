@@ -1,14 +1,9 @@
 ~~ Tamagotchi.Tests
-- Unit Testing van business & controller logic
+- Unit Testing van Nightcontroller
 - Test minimaal de spelregels van de kamers en de validatieregels van de kamers, Tamagotchi's en boekingen. 
 
 ~~ Tamagotchi
 
-- Hotelroom controller (moet nog gebruik maken van DI) (Dependency Injection / IO)
-- Tamagotchi controller (moet nog gebruik maken van DI)
-- Booking controller (moet nog gebruik maken van DI)
-- Boeking mogelijk voor 1 Tamagotchi
-- 1 Nacht moet op de juiste manier laten verlopen
-
-
--- Index (Waar 'Start Nacht' staat) moet een overzicht tonen met tamagotchis die een boeking hebben
+-- Bij het boeken, moet het mogelijk zijn om meerdere tamagotchi's tegelijk te kunnen boeken.
+-- Een duidelijke overzicht van levende of dode tamagotchis
+-- Night View moet inhoud krijgen
