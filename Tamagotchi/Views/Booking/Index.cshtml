@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<Tamagotchi.Models.Booking>
-
 <div class="container">
     <div class="row">
         <div class="box">
@@ -14,10 +13,10 @@
                             @Html.DisplayNameFor(model => model.Nights)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.TamagotchiId)
+                            Tamagotchi
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.HotelroomId)
+                            Kamer
                         </th>
                         <th></th>
                     </tr>
@@ -29,10 +28,10 @@
                                 @Html.DisplayFor(modelItem => item.Nights)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.TamagotchiId)
+                                @Html.DisplayFor(modelItem => item.Tamagochi.Name)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.HotelroomId)
+                                @Html.DisplayFor(modelItem => item.Hotelroom.Type)
                             </td>
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

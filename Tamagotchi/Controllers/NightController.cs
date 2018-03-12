@@ -18,10 +18,6 @@ namespace Tamagotchi.Controllers
         private const string GAME = "GAME";
         private const string WORK = "WORK";
         private const string MISC = "MISC";
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
         
         public ActionResult Index()
         {
@@ -34,7 +30,8 @@ namespace Tamagotchi.Controllers
                     case REST:
                         booking.Tamagochi.Currency -= 10;
                         booking.Tamagochi.Health += 20;
-                        booking.Tamagochi.Hapinness += 10;
+                        if (booking.Tamagochi.Hapinness + 10 < 101)
+                            booking.Tamagochi.Hapinness += 10;
                         break;
                     case GAME:
                         booking.Tamagochi.Currency -= 20;
@@ -43,10 +40,10 @@ namespace Tamagotchi.Controllers
                     case WORK:
                         Random r = new Random();
                         booking.Tamagochi.Currency += r.Next(10, 60);
-                        booking.Tamagochi.Hapinness += 20;
+                        if (booking.Tamagochi.Hapinness + 20 < 101)
+                            booking.Tamagochi.Hapinness += 20;
                         break;
                     case FIGHT:
-                        // TODO: Implement
                         if (booking.Hotelroom.Bookings.Count > 1)
                         {
                             Booking booking2 = booking.Hotelroom.Bookings.Where(b => b.Tamagochi.Id != booking.Tamagochi.Id).First();
@@ -88,10 +85,11 @@ namespace Tamagotchi.Controllers
                     _bookingRepo.Remove(booking);
                 else
                     _bookingRepo.Update(booking);
+                RepositoryLocator.Repositories.Save();
             }
 
 
-            return View();
+            return View(_bookingRepo.GetAll());
         }
     }
 }

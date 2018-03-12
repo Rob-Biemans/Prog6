@@ -1,5 +1,8 @@
 ﻿@model Tamagotchi.Models.Booking
-
+@{
+    var tamas = new SelectList(ViewBag.TamagotchiName, "Value", "Text");
+    var rooms = new SelectList(ViewBag.HotelRooms, "Value", "Text");
+}
 <div class="container">
     <div class="row">
         <div class="box">
@@ -26,12 +29,8 @@
 
                         <div class="form-group">
                             @Html.LabelFor(model => model.TamagotchiId, htmlAttributes: new { @class = "control-label col-md-2" })
-                            @*<div class="col-md-10">
-                                @Html.EditorFor(model => model.TamagotchiId, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.TamagotchiId, "", new { @class = "text-danger" })
-                            </div>*@
                             <div class="col-md-10">
-                                @Html.DropDownList("TamagotchiName")
+                                @Html.DropDownListFor(model => model.TamagotchiId, tamas)
                                 @Html.ValidationMessageFor(model => model.TamagotchiId, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -39,8 +38,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.HotelroomId, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @*@Html.EditorFor(model => model.HotelroomId, new { htmlAttributes = new { @class = "form-control" } })*@
-                                @Html.DropDownList("HotelRooms")
+                                @Html.DropDownListFor(model => model.HotelroomId, rooms)
                                 @Html.ValidationMessageFor(model => model.HotelroomId, "", new { @class = "text-danger" })
                             </div>
                         </div>

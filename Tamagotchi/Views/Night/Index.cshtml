@@ -4,4 +4,47 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Night Started</h2>
+<h2>@(@Model.Count() == 0 ? "Night has finished. Nothing happend, as there are no bookings." : "Night has finished. See results of bookings below.")</h2>
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-lg-12">
+
+            <table class="table">
+                <tr>
+                    <th>
+                        Boekingnummer
+                    </th>
+                    <th>
+                        Tamagotchi
+                    </th>
+                    <th>
+                        Kamer
+                    </th>
+                    <th>
+                        Nachten
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tamagochi.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hotelroom.Type)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nights)
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+
+    </div>
+</div>

@@ -45,6 +45,7 @@ namespace Tamagotchi.Domein.Repository
                 b.Nights = obj.Nights;
                 b.Tamagochi = obj.Tamagochi;
                 b.TamagotchiId = obj.TamagotchiId;
+                
             }
         }
 

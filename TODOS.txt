@@ -5,5 +5,3 @@
 ~~ Tamagotchi
 
 -- Bij het boeken, moet het mogelijk zijn om meerdere tamagotchi's tegelijk te kunnen boeken.
--- Een duidelijke overzicht van levende of dode tamagotchis
--- Night View moet inhoud krijgen

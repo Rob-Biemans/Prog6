@@ -62,7 +62,14 @@ namespace Tamagotchi.Domein
 
         public void Save()
         {
-            _db.SaveChanges();
+            try
+            {
+                _db.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException e)
+            {
+                var a = e;
+            }
         }
 
         //public IUserRepository UserRepository

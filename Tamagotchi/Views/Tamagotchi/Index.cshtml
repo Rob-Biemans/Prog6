@@ -35,7 +35,7 @@
 
                     @foreach (var item in Model)
                     {
-                        <tr>
+                        <tr class="@(@item.Alive == 0 ? "dead" : "alive")">
                             <td>                             
                                 @Html.DisplayFor(modelItem => item.Name)
                             </td>
@@ -55,7 +55,7 @@
                                 @Html.DisplayFor(modelItem => item.Hapinness)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Alive)
+                                @(@item.Alive == 0 ? "No" : "Yes")
                             </td>
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

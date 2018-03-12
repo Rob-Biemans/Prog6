@@ -35,6 +35,12 @@ namespace Tamagotchi.Controllers
             {
                 return HttpNotFound();
             }
+            List<SelectListItem> items = new List<SelectListItem>();
+            List<SelectListItem> hotelrooms = new List<SelectListItem>();
+            tamaRepo.GetAvailable().ForEach(t => items.Add(new SelectListItem { Text = t.Name, Value = t.Id.ToString() }));
+            hotelRepo.GetAvailable().ForEach(h => hotelrooms.Add(new SelectListItem { Text = h.Type, Value = h.Id.ToString() }));
+            ViewBag.TamagotchiName = items;
+            ViewBag.HotelRooms = hotelrooms;
             return View(booking);
         }
 
@@ -80,6 +86,13 @@ namespace Tamagotchi.Controllers
             {
                 return HttpNotFound();
             }
+
+            List<SelectListItem> items = new List<SelectListItem>();
+            List<SelectListItem> hotelrooms = new List<SelectListItem>();
+            tamaRepo.GetAvailable().ForEach(t => items.Add(new SelectListItem { Text = t.Name, Value = t.Id.ToString() }));
+            hotelRepo.GetAvailable().ForEach(h => hotelrooms.Add(new SelectListItem { Text = h.Type, Value = h.Id.ToString() }));
+            ViewBag.TamagotchiName = items;
+            ViewBag.HotelRooms = hotelrooms;
             return View(booking);
         }
 
